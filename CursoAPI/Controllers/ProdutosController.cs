@@ -24,14 +24,14 @@ namespace CursoAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProduto()
         {
-            return await _context.Produto.Include("Categoria").ToListAsync();
+            return await _context.Produtos.Include("Categoria").ToListAsync();
         }
 
         // GET: api/Produtos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> GetProduto(int id)
         {
-            var produto = await _context.Produto.Include("Categoria").FirstOrDefaultAsync(x => x.Id == id);
+            var produto = await _context.Produtos.Include("Categoria").FirstOrDefaultAsync(x => x.Id == id);
 
             if (produto == null)
             {
@@ -79,7 +79,7 @@ namespace CursoAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
-            _context.Produto.Add(produto);
+            _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProduto", new { id = produto.Id }, produto);
@@ -89,13 +89,13 @@ namespace CursoAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Produto>> DeleteProduto(int id)
         {
-            var produto = await _context.Produto.FindAsync(id);
+            var produto = await _context.Produtos.FindAsync(id);
             if (produto == null)
             {
                 return NotFound();
             }
 
-            _context.Produto.Remove(produto);
+            _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
 
             return produto;
@@ -103,7 +103,7 @@ namespace CursoAPI.Controllers
 
         private bool ProdutoExists(int id)
         {
-            return _context.Produto.Any(e => e.Id == id);
+            return _context.Produtos.Any(e => e.Id == id);
         }
     }
 }

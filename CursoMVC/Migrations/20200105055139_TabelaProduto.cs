@@ -7,7 +7,7 @@ namespace CursoMVC.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Produto",
+                name: "Produtos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -29,14 +29,14 @@ namespace CursoMVC.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produto_CategoriaId",
-                table: "Produto",
+                table: "Produtos",
                 column: "CategoriaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Produto");
+                name: "Produtos");
         }
     }
 }

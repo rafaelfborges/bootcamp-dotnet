@@ -35,7 +35,7 @@ namespace CursoMVC.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("CursoMVC.Models.Produto", b =>
+            modelBuilder.Entity("CursoMVC.Models.Produtos", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,10 +55,10 @@ namespace CursoMVC.Migrations
 
                     b.HasIndex("CategoriaId");
 
-                    b.ToTable("Produto");
+                    b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("CursoMVC.Models.Produto", b =>
+            modelBuilder.Entity("CursoMVC.Models.Produtos", b =>
                 {
                     b.HasOne("CursoMVC.Models.Categoria", "Categoria")
                         .WithMany("Produtos")
